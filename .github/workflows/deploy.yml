@@ -1,5 +1,4 @@
 name: Deploy Nginx Hello World
-
      on:
        push:
          branches:
