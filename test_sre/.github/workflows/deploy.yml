@@ -1,0 +1,23 @@
+name: Deploy Nginx Hello World
+
+     on:
+       push:
+         branches:
+           - main
+
+     jobs:
+       deploy:
+         runs-on: ubuntu-latest
+         
+         steps:
+         - name: Checkout code
+           uses: actions/checkout@v3
+
+         - name: Set up kubectl
+           run: |
+             mkdir -p -/.kube
+             echo "${{ secrets.KUBE_CONFIG }}" | base64 --decode > -/ .kube/config
+
+         - name: Deploy Nginx Application
+           run: |
+             kubectl apply -f nginx-deployment.yaml
