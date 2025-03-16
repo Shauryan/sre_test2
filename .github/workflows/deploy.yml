@@ -1,9 +1,9 @@
 name: Deploy Nginx Hello World
-     on:
+on:
        push:
          branches:
            - main
-     jobs:
+jobs:
        deploy:
          runs-on: ubuntu-latest
 
